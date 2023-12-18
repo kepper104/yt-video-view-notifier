@@ -67,7 +67,7 @@ def send_messages():
         send_message(chat_id, title, views, prev_views, prognosis)
 
 
-schedule.every().day.at(SENDING_TIME).do(send_message)
+schedule.every().day.at(SENDING_TIME).do(send_messages)
 
 while True:
     schedule.run_pending()
