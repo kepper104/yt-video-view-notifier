@@ -63,11 +63,16 @@ def send_messages():
     views = get_views(url)
     prev_views = get_prev_views()
     prognosis = get_prognosis(views)
+    print(f"Previous views {prev_views}, currently {views}, prognosis {prognosis}")
     for chat_id in CHAT_IDS:
         send_message(chat_id, title, views, prev_views, prognosis)
+        print(f"Sent to {chat_id}")
+    write_prev_views(views)
+    print(f"Wrote {views} to file")
 
 
-schedule.every().day.at(SENDING_TIME).do(send_messages)
+if __name__ == "__main__":
+    schedule.every().day.at(SENDING_TIME).do(send_messages)
 
-while True:
-    schedule.run_pending()
+    while True:
+        schedule.run_pending()
