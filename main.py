@@ -67,8 +67,7 @@ def send_messages():
     if views >= 200_000_000:
         for chat_id in CHAT_IDS:
             send_message(chat_id, title, views, time_diff, average)
-
-    exit()
+        exit()
 
 
 schedule.every(10).seconds.do(send_messages)
